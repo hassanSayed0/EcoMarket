@@ -29,36 +29,25 @@ class ProductsTheme4Section: SectionsLayout {
         let height: CGFloat = 260.0
         
         // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0)))
+        let item2 = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.4) ))
         
         // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(height))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1)),
+            subitem: item2, count: 1)
         
-        group.interItemSpacing = .fixed(interItemSpacing)
-        
-        // Header
-        let header = createHeader()
+        let group2 = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(height)),
+            subitems: [item, group])
+        group2.interItemSpacing = .fixed(interItemSpacing)
         
         // Section
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
+        let section = NSCollectionLayoutSection(group: group2)
         
         return section
-    }
-    
-    private func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .estimated(50))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: CollectionSectionHeader.elementKind,
-            alignment: .top
-        )
-        
-        header.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        return header
     }
     
     func collectionView(

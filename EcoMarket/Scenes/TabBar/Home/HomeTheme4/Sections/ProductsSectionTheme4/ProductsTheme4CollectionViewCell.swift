@@ -18,9 +18,6 @@ class ProductsTheme4CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
 
     // MARK: - Cell Configuration
-    //
-    /// Configures the cell with data from the given product model.
-    /// - Parameter product: The product model to display in the cell.
     func setup(product: ProductsTheme4Model) {
         productImage.image = UIImage(named: product.image)
         productName.text = product.name
@@ -31,8 +28,7 @@ class ProductsTheme4CollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - UI Configuration
-    //
-    /// Applies additional UI configurations to the cell's subviews.
+
     private func setupUI() {
         // ImageUI
         productImage.layer.cornerRadius = 15

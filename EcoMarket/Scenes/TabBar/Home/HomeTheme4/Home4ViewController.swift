@@ -42,30 +42,14 @@ class Home4ViewController: UIViewController {
         view.backgroundColor = AppColor.backgroundColor
         containerStackView.layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         containerStackView.isLayoutMarginsRelativeArrangement = true
-//        setupButtonsUI()
-//        setupLabelsUI()
+        setupButtonsUI()
     }
     
-//    private func setupButtonsUI() {
-//        menuButton.setTitle("", for: .normal)
-//        menuButton.setImage(AppImage.HomeTheme2.menuButtonIcon, for: .normal)
-//
-//        userButton.setTitle("", for: .normal)
-//        userButton.setImage(AppImage.HomeTheme2.userButtonIcon, for: .normal)
-//
-//        filterButton.setTitle("", for: .normal)
-//        filterButton.setImage(AppImage.HomeTheme2.filterButtonIcon, for: .normal)
-//    }
-    
-//    private func setupLabelsUI() {
-//        titleLabel.text = L10n.Home.Theme4.title
-//        titleLabel.font = .h1
-//        titleLabel.textColor = AppColor.primaryText
-//
-//        subtitleLabel.text = L10n.Home.Theme4.subtitle
-//        subtitleLabel.font = .h3
-//        subtitleLabel.textColor = AppColor.socialButton
-//    }
+    private func setupButtonsUI() {
+
+        filterButton.setTitle("", for: .normal)
+        filterButton.setImage(AppImage.delete, for: .normal)
+    }
     
     // MARK: - UI Configuration
     

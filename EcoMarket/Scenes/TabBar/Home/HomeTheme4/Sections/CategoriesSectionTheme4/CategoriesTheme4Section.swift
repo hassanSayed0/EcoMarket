@@ -34,28 +34,12 @@ class CategoriesTheme4Section: SectionsLayout {
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(80), heightDimension: .absolute(30))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
-        let header = createHeader()
-
         // Section
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 6
         section.contentInsets.bottom = 25
-        section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .groupPaging
         return section
-    }
-    
-    private func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .estimated(50))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: CollectionSectionHeader.elementKind,
-            alignment: .top
-        )
-        
-        header.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        return header
     }
     
     func collectionView(
