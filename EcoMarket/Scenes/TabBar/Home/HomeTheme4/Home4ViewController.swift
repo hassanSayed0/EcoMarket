@@ -8,22 +8,107 @@
 import UIKit
 
 class Home4ViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    //
+    var sections: [any SectionsLayout] = []
+    let homeFactory = Home4Factory()
+    
+    // MARK: - Outlets
+    //
+    @IBOutlet weak var containerStackView: UIStackView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var filterButton: UIButton!
+    
+    // MARK: - Lifecycle Methods
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let sections = Home4FactoryModel.mockData
+        sections.forEach { section in
+            let sectionLayout = homeFactory.createSection(section: section)
+            self.sections.append(sectionLayout)
+        }
+        configureCollectionView()
+        collectionView.reloadData()
+        configureUI()
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Private Methods
+    //
+    private func configureUI() {
+        view.backgroundColor = AppColor.backgroundColor
+        containerStackView.layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+        containerStackView.isLayoutMarginsRelativeArrangement = true
+//        setupButtonsUI()
+//        setupLabelsUI()
     }
-    */
+    
+//    private func setupButtonsUI() {
+//        menuButton.setTitle("", for: .normal)
+//        menuButton.setImage(AppImage.HomeTheme2.menuButtonIcon, for: .normal)
+//
+//        userButton.setTitle("", for: .normal)
+//        userButton.setImage(AppImage.HomeTheme2.userButtonIcon, for: .normal)
+//
+//        filterButton.setTitle("", for: .normal)
+//        filterButton.setImage(AppImage.HomeTheme2.filterButtonIcon, for: .normal)
+//    }
+    
+//    private func setupLabelsUI() {
+//        titleLabel.text = L10n.Home.Theme4.title
+//        titleLabel.font = .h1
+//        titleLabel.textColor = AppColor.primaryText
+//
+//        subtitleLabel.text = L10n.Home.Theme4.subtitle
+//        subtitleLabel.font = .h3
+//        subtitleLabel.textColor = AppColor.socialButton
+//    }
+    
+    // MARK: - UI Configuration
+    
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        sections.forEach { section in
+            section.registerCell(in: self.collectionView)
+            section.registerSupplementaryView(in: self.collectionView)
+        }
+        collectionView.backgroundColor = AppColor.backgroundColor
+        collectionView.collectionViewLayout = createCompositionalLayout()
+    }
+    
+    // MARK: - Compositional Layout
 
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
+            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+        }
+    }
+}
+
+extension Home4ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    // MARK: - UICollectionViewDataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        sections[section].numberOfItems()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        sections[indexPath.section].collectionView(collectionView, cellForItemAt: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        sections[indexPath.section].collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        sections[indexPath.section].collectionView(collectionView, didSelectItemAt: indexPath)
+    }
 }
