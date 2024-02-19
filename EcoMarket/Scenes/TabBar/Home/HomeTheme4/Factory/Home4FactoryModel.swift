@@ -8,12 +8,9 @@
 import Foundation
 
 struct Home4FactoryModel: Codable {
-    let type: Home4Type
-}
-
-extension Home4FactoryModel {
-    static let mockData: [Home4FactoryModel] = [
-        Home4FactoryModel(type: .categories(CategoriesTheme4Model.mockData)),
-        Home4FactoryModel(type: .product(ProductsTheme4Model.mockData))
+    
+    static let mockData: [Home4Type] = [
+         .categories(CategoriesTheme4Model.mockData),
+         .product(ProductsTheme4Model.mockData)
     ]
 }

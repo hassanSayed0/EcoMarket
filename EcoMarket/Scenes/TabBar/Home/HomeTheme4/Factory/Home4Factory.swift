@@ -14,8 +14,8 @@ enum Home4Type: Codable {
 
 class Home4Factory {
     
-    func createSection(section: Home4FactoryModel) -> any SectionsLayout {
-        switch section.type {
+    func createSection(section: Home4Type) -> any SectionsLayout {
+        switch section {
         case .categories(let items ):
             return CategoriesTheme4Section(items: items)
         case .product(let items ):
