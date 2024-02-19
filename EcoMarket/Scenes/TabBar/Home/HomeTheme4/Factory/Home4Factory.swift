@@ -8,20 +8,18 @@
 import Foundation
 
 enum Home4Type: Codable {
-    case categories
-    case product
+    case categories([CategoriesTheme4Model])
+    case product([ProductsTheme4Model])
 }
-
 
 class Home4Factory {
     
     func createSection(section: Home4FactoryModel) -> any SectionsLayout {
         switch section.type {
-
-            case .categories:
-                return CategoriesTheme4Section(items: CategoriesTheme4Model.mockData)
-            case .product:
-                return ProductsTheme4Section(items: ProductsTheme4Model.mockData)
+        case .categories(let items ):
+            return CategoriesTheme4Section(items: items)
+        case .product(let items ):
+            return ProductsTheme4Section(items: items)
         }
     }
 }
