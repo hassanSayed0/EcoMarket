@@ -35,15 +35,15 @@ class SuccessViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        view.backgroundColor = AppColor.backgroundColor
-        containerView.backgroundColor = AppColor.backgroundColor
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
+        containerView.backgroundColor = Asset.AppColor.backgroundColor.color
         
         // Labels UI
         successLabel.text = L10n.Success.title
-        successLabel.textColor = AppColor.primaryText
+        successLabel.textColor = Asset.AppColor.primaryText.color
         
         successMessage.text = L10n.Success.message
-        successMessage.textColor = AppColor.socialButton
+        successMessage.textColor = Asset.AppColor.socialButton.color
         
         // Images UI
         imageView.image = AppImage.successImage

@@ -20,17 +20,17 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        backgroundColor = AppColor.backgroundColor
+        backgroundColor = Asset.AppColor.backgroundColor.color
         
         // title setup
         titleLabel.font = .custom(size: 32, weight: .bold)
         titleLabel.numberOfLines = 2
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         
         // subTitle setup
         subTitleLabel.font = .custom(size: 16, weight: .regular)
         subTitleLabel.numberOfLines = 2
-        subTitleLabel.textColor = AppColor.secondaryText
+        subTitleLabel.textColor = Asset.AppColor.secondaryText.color
         
         image.drawOnboardingShape()
         

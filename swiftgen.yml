@@ -7,3 +7,9 @@ strings:
    outputs:
      - templateName: structured-swift5
        output: Strings+Generated.swift
+
+xcassets:
+  - inputs: Assets/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: Assets.swift

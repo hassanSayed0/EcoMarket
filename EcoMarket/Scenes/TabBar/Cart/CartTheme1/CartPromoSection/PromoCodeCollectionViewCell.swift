@@ -32,7 +32,7 @@ class PromoCodeCollectionViewCell: UICollectionViewCell {
        private func configureContainerView() {
            containerView.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
            containerView.isLayoutMarginsRelativeArrangement = true
-           containerView.backgroundColor = AppColor.searchbarBackground
+           containerView.backgroundColor = Asset.AppColor.searchBackground.color
            containerView.layer.cornerRadius = 10
        }
        
@@ -48,8 +48,8 @@ class PromoCodeCollectionViewCell: UICollectionViewCell {
        /// Configures the appearance of the apply button.
        private func configureButtonUI() {
            applyButton.setTitle("Apply", for: .normal)
-           applyButton.setTitleColor(AppColor.mainTheme, for: .normal)
-           applyButton.backgroundColor = AppColor.primaryButton
+           applyButton.setTitleColor(Asset.AppColor.mainTheme.color, for: .normal)
+           applyButton.backgroundColor = Asset.AppColor.primaryButton.color
            applyButton.layer.cornerRadius = 10
            
            if #available(iOS 15.0, *) {

@@ -37,7 +37,7 @@ class ProfileViewController: UICollectionViewController {
         sections.forEach { section in
             section.registerCell(in: self.collectionView)
         }
-        collectionView.backgroundColor = AppColor.backgroundColor
+        collectionView.backgroundColor = Asset.AppColor.backgroundColor.color
         collectionView.collectionViewLayout = createCompositionalLayout()
     }
     

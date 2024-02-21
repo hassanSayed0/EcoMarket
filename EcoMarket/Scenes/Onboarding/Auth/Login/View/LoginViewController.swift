@@ -41,8 +41,8 @@ class LoginViewController: UIViewController {
         
     /// Configures the initial appearance of UI elements
     private func configureViews() {
-        view.backgroundColor = AppColor.backgroundColor
-        lineView.backgroundColor = AppColor.textFieldUnderLine
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
+        lineView.backgroundColor = Asset.AppColor.textFieldUnderLine.color
         
         // Images UI
         logoImage.image = AppImage.appLogo
@@ -70,12 +70,12 @@ class LoginViewController: UIViewController {
     /// Configures appearance of labels
     private func configureLabelsUI() {
         titleLabel.text = L10n.Login.title
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         titleLabel.font = .h1
         subtitleLabel.text = L10n.Login.subtitle
-        subtitleLabel.textColor = AppColor.socialButton
+        subtitleLabel.textColor = Asset.AppColor.socialButton.color
         subtitleLabel.font = .medium
-        orLabel.textColor = AppColor.primaryText
+        orLabel.textColor = Asset.AppColor.primaryText.color
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {

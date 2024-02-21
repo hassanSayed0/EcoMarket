@@ -36,12 +36,12 @@ class SearchView: UIView {
         searchTextField.borderStyle = .none
         
         ///  SearchImage UI
-        searchImage.tintColor = AppColor.primaryText
+        searchImage.tintColor = Asset.AppColor.primaryText.color
         searchImage.image = AppImage.searchImage
         
         /// View UI
         layer.cornerRadius = frame.height / 2
-        backgroundColor = AppColor.searchbarBackground
+        backgroundColor = Asset.AppColor.searchBackground.color
     }
 }
 

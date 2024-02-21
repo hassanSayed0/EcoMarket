@@ -30,7 +30,7 @@ open class SizeCollectionViewCell: UICollectionViewCell {
         // Button UI
         layer.cornerRadius = 20
         layer.borderWidth = 1
-        layer.borderColor = AppColor.socialButton.cgColor
+        layer.borderColor = Asset.AppColor.socialButton.color.cgColor
         
         // Label
         addSubview(label)

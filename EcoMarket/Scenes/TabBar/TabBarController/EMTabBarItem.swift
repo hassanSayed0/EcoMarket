@@ -65,7 +65,7 @@ class EMTabBarItem: UIView {
     private func setupTitleLabel() {
         titleLabel.text = item.title
         titleLabel.font = .custom(size: 12, weight: .medium)
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         titleLabel.textAlignment = .center
     }
     
@@ -91,8 +91,8 @@ class EMTabBarItem: UIView {
     // MARK: - Public Methods
     public func select() {
         widthConstraint?.constant = _width
-        backgroundColor = AppColor.secondaryBackground
-        iconView.backgroundColor = AppColor.primaryButton
+        backgroundColor = Asset.AppColor.secondaryBackground.color
+        iconView.backgroundColor = Asset.AppColor.primaryButton.color
         
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.iconImageView.image = self?.item.selectedImage

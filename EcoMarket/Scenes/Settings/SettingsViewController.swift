@@ -40,7 +40,7 @@ class SettingsViewController: UICollectionViewController {
             section.registerCell(in: self.collectionView)
             section.registerSupplementaryView(in: self.collectionView)
         }
-        collectionView.backgroundColor = AppColor.backgroundColor
+        collectionView.backgroundColor = Asset.AppColor.backgroundColor.color
         collectionView.collectionViewLayout = createCompositionalLayout()
     }
     

@@ -41,13 +41,13 @@ class NotificationCollectionViewCell: UICollectionViewCell {
     
     private func configureUI() {
         userImageView.makeRounded()
-        userNameLabel.textColor = AppColor.primaryText
+        userNameLabel.textColor = Asset.AppColor.primaryText.color
         userNameLabel.font = .medium
         
-        messageLabel.textColor = AppColor.socialButton
+        messageLabel.textColor = Asset.AppColor.socialButton.color
         messageLabel.font = .regular
         
-        timeLabel.textColor = AppColor.socialButton
+        timeLabel.textColor = Asset.AppColor.socialButton.color
         timeLabel.font = .regular
     }
 }

@@ -38,7 +38,7 @@ class OnboardingViewController: UIViewController {
     // MARK: - Setup UI
     //
     private func setupUI() {
-        view.backgroundColor = AppColor.backgroundColor
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
         
         setupCollectionView()
         setupPageControl()
@@ -60,7 +60,7 @@ class OnboardingViewController: UIViewController {
     
     private func setupNextButton() {
         nextButton.setTitle("", for: .normal)
-        nextButton.backgroundColor = AppColor.primaryButton
+        nextButton.backgroundColor = Asset.AppColor.primaryButton.color
         nextButton.layer.cornerRadius = nextButton.frame.width / 2
         nextButton.clipsToBounds = true
         nextButton.setImage(AppImage.Onboarding.nextButton, for: .normal)

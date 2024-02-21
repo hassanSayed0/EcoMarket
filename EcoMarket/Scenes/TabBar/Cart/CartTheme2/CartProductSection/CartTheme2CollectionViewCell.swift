@@ -48,9 +48,9 @@ class CartTheme2CollectionViewCell: UICollectionViewCell {
         productName.font = .regular
         
         // Labels Color
-        brandName.textColor = AppColor.primaryText
-        productPrice.textColor = AppColor.primaryText
-        productName.textColor = AppColor.socialButton
+        brandName.textColor = Asset.AppColor.primaryText.color
+        productPrice.textColor = Asset.AppColor.primaryText.color
+        productName.textColor = Asset.AppColor.socialButton.color
     }
     
     /// Configures the appearance of the delete button.
@@ -61,8 +61,8 @@ class CartTheme2CollectionViewCell: UICollectionViewCell {
     
     private func setupStapperView() {
         stapperView.maximumValue = 100
-        stapperView.backgroundColor = AppColor.backgroundColor
-        stapperView.setTintColor(AppColor.primaryButton)
+        stapperView.backgroundColor = Asset.AppColor.backgroundColor.color
+        stapperView.setTintColor(Asset.AppColor.primaryButton.color)
         stapperView.delegate = self
     }
 

@@ -36,12 +36,12 @@ class CategoryCollectionViewCell3: UICollectionViewCell {
         
         /// View UI
         bottomView.layer.cornerRadius = 16
-        bottomView.backgroundColor = AppColor.mainTheme.withAlphaComponent(0.4)
+        bottomView.backgroundColor = Asset.AppColor.mainTheme.color.withAlphaComponent(0.4)
         
         /// Labels UI
-        categoryName.textColor = AppColor.primaryText
+        categoryName.textColor = Asset.AppColor.primaryText.color
         categoryName.font = UIFont.h3
-        productCount.textColor = AppColor.primaryText
+        productCount.textColor = Asset.AppColor.primaryText.color
         productCount.font = UIFont.regular
     }
 }

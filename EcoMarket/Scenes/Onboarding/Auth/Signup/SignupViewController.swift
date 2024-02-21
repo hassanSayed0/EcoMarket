@@ -31,7 +31,7 @@ class SignupViewController: UIViewController {
     
     /// Configures the initial appearance of UI elements
     private func configureViews() {
-        view.backgroundColor = AppColor.backgroundColor
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
         
         // Images UI
         logoImage.image = AppImage.appLogo
@@ -71,12 +71,12 @@ class SignupViewController: UIViewController {
     /// Configures appearance of labels
     private func configureLabelsUI() {
         titleLabel.text = L10n.Signup.title
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         
         subtitleLabel.text = L10n.Signup.subtitle
-        subtitleLabel.textColor = AppColor.socialButton
+        subtitleLabel.textColor = Asset.AppColor.socialButton.color
         
         termsLabel.text = L10n.Signup.terms
-        termsLabel.textColor = AppColor.socialButton
+        termsLabel.textColor = Asset.AppColor.socialButton.color
     }
 }

@@ -44,7 +44,7 @@ class EMTabBar: UIView {
     // MARK: - setup subviews
     //
     private func setup() {
-        backgroundColor = AppColor.backgroundColor
+        backgroundColor = Asset.AppColor.backgroundColor.color
         heightConstraints(46 + (UIApplication.shared.mainWindow?.safeAreaInsets.bottom ?? 20))
         layer.cornerRadius = 12
         setupStackView()

@@ -49,9 +49,9 @@ class CartProductCollectionViewCell: UICollectionViewCell {
         productName.font = .regular
         
         // Labels Color
-        brandName.textColor = AppColor.primaryText
-        productPrice.textColor = AppColor.primaryText
-        productName.textColor = AppColor.socialButton
+        brandName.textColor = Asset.AppColor.primaryText.color
+        productPrice.textColor = Asset.AppColor.primaryText.color
+        productName.textColor = Asset.AppColor.socialButton.color
     }
     
     /// Configures the appearance of the container view, including shadows and corner radius.
@@ -60,8 +60,8 @@ class CartProductCollectionViewCell: UICollectionViewCell {
         containerView.isLayoutMarginsRelativeArrangement = true
         
         // Adding a custom view to the container with shadow
-        containerView.backgroundColor = AppColor.mainTheme
-        containerView.layer.shadowColor = AppColor.primaryButton.cgColor
+        containerView.backgroundColor = Asset.AppColor.mainTheme.color
+        containerView.layer.shadowColor = Asset.AppColor.primaryButton.color.cgColor
         containerView.layer.shadowOffset = .zero
         containerView.layer.shadowOpacity = 0.2
         containerView.layer.shadowRadius = 5
@@ -70,8 +70,8 @@ class CartProductCollectionViewCell: UICollectionViewCell {
     
     private func setupStapperView() {
         stapperView.maximumValue = 100
-        stapperView.backgroundColor = AppColor.stapperBackground
-        stapperView.setTintColor(AppColor.primaryButton)
+        stapperView.backgroundColor = Asset.AppColor.stapperBackground.color
+        stapperView.setTintColor(Asset.AppColor.primaryButton.color)
         stapperView.delegate = self
     }
 }

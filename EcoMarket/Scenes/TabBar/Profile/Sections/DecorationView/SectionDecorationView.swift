@@ -22,10 +22,10 @@ class SectionDecorationView: UICollectionReusableView {
     
     func configure() {
         addSubview(view)
-        view.backgroundColor = AppColor.backgroundColor
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
         view.layer.cornerRadius = 15
         view.layer.borderWidth = 1
-        view.layer.borderColor = AppColor.textFieldUnderLine.cgColor
+        view.layer.borderColor = Asset.AppColor.textFieldUnderLine.color.cgColor
         view.fillSuperview(padding: UIEdgeInsets(top: 40, left: 25, bottom: 30, right: 25))
     }
 }

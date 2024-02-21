@@ -35,12 +35,12 @@ class ProductReviewView: UIView {
     
     private func configureReviewLabel() {
         reviewLabel.font = .medium
-        reviewLabel.textColor = AppColor.backgroundColor
+        reviewLabel.textColor = Asset.AppColor.backgroundColor.color
     }
     
     private func configureReviewCountLabel() {
         reviewCountLabel.font = .small
-        reviewCountLabel.textColor = AppColor.backgroundColor
+        reviewCountLabel.textColor = Asset.AppColor.backgroundColor.color
     }
     
     public func setReview(count: String, review: Double) {

@@ -10,7 +10,7 @@ import UIKit
 class PrimaryButton: EcoMarketButton {
     override func setupButton() {
         super.setupButton()
-        setTitleColor(AppColor.mainTheme, for: .normal)
-        backgroundColor = AppColor.primaryButton
+        setTitleColor(Asset.AppColor.mainTheme.color, for: .normal)
+        backgroundColor = Asset.AppColor.primaryButton.color
     }
 }

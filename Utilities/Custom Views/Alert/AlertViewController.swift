@@ -27,11 +27,11 @@ class AlertViewController: UIViewController, AlertInterface {
     }
     
     private func setupUI() {
-        view.backgroundColor = AppColor.socialButton.withAlphaComponent(0.3)
+        view.backgroundColor = Asset.AppColor.socialButton.color.withAlphaComponent(0.3)
         alertView.layer.cornerRadius = 20
         confirmButton.layer.cornerRadius = 20
         statusImageView.contentMode = .scaleAspectFit
-        alertView.backgroundColor = AppColor.backgroundColor
+        alertView.backgroundColor = Asset.AppColor.backgroundColor.color
         alertView.layer.shadowColor = UIColor.gray.cgColor
         alertView.layer.shadowRadius = 10
         alertView.layer.shadowOpacity = 0.5

@@ -30,7 +30,7 @@ class Header: UICollectionReusableView {
     
     private func setupLabel() {
         label.font = .h2
-        label.textColor = AppColor.primaryText
+        label.textColor = Asset.AppColor.primaryText.color
         addSubview(label)
     }
     

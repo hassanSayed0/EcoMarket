@@ -55,7 +55,7 @@ class ProductDetailsViewController: UIViewController {
     //
     /// UI Configuration
     private func configureUI() {
-        view.backgroundColor = AppColor.backgroundColor
+        view.backgroundColor = Asset.AppColor.backgroundColor.color
         productImageView.maskCustomProductShape()
         setupProductNameLabel()
         setupProductBrandLabel()
@@ -70,35 +70,35 @@ class ProductDetailsViewController: UIViewController {
     
     private func setupStapperView() {
         stapperView.maximumValue = 100
-        stapperView.backgroundColor = AppColor.secondaryBackground
-        stapperView.setTintColor(AppColor.primaryButton)
+        stapperView.backgroundColor = Asset.AppColor.secondaryBackground.color
+        stapperView.setTintColor(Asset.AppColor.primaryButton.color)
         stapperView.delegate = self
     }
     
     private func setupProductNameLabel() {
         productNameLabel.font = .h2
-        productNameLabel.textColor = AppColor.primaryText
+        productNameLabel.textColor = Asset.AppColor.primaryText.color
     }
     
     private func setupProductBrandLabel() {
         productBrandLabel.font = .regular
-        productBrandLabel.textColor = AppColor.socialButton
+        productBrandLabel.textColor = Asset.AppColor.socialButton.color
     }
     
     private func setupDescriptionTitleLabel() {
         descriptionTitleLabel.font = .h2
-        descriptionTitleLabel.textColor = AppColor.primaryText
+        descriptionTitleLabel.textColor = Asset.AppColor.primaryText.color
     }
     
     private func setupDescriptionSubTitleLabel() {
         descriptionSubTitleLabel.font = .regular
-        descriptionSubTitleLabel.textColor = AppColor.socialButton
+        descriptionSubTitleLabel.textColor = Asset.AppColor.socialButton.color
     }
     
     private func setupSizeView() {
         sizeView.sizeDelegate = self
         sizeViewTitleLabel.font = .h2
-        sizeViewTitleLabel.textColor = AppColor.primaryText
+        sizeViewTitleLabel.textColor = Asset.AppColor.primaryText.color
     }
     
     private func setupColorView() {

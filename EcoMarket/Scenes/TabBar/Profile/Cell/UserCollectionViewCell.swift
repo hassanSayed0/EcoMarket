@@ -28,8 +28,8 @@ class UserCollectionViewCell: UICollectionViewCell {
         // Labels UI
         userName.font = .h2
         userEmail.font = .medium
-        userName.textColor = AppColor.primaryText
-        userEmail.textColor = AppColor.socialButton
+        userName.textColor = Asset.AppColor.primaryText.color
+        userEmail.textColor = Asset.AppColor.socialButton.color
         
         // Image UI
         userImage.layer.cornerRadius = 10
@@ -41,8 +41,8 @@ class UserCollectionViewCell: UICollectionViewCell {
             userStackView.isLayoutMarginsRelativeArrangement = true
             
             // Adding a custom view to the container with shadow
-            userStackView.backgroundColor = AppColor.mainTheme
-            userStackView.layer.shadowColor = AppColor.primaryButton.cgColor
+            userStackView.backgroundColor = Asset.AppColor.mainTheme.color
+            userStackView.layer.shadowColor = Asset.AppColor.primaryButton.color.cgColor
             userStackView.layer.shadowOffset = .zero
             userStackView.layer.shadowOpacity = 0.2
             userStackView.layer.shadowRadius = 4

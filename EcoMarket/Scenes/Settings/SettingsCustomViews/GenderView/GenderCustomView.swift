@@ -60,7 +60,7 @@ class GenderCustomView: UIView {
     // MARK: - UI Configuration
     //
     private func configureUI() {
-        backgroundColor = AppColor.backgroundColor
+        backgroundColor = Asset.AppColor.backgroundColor.color
         titleLabel.text =  L10n.Profile.genderTitle
         heightConstraints(30)
         configureTitleLable()
@@ -74,7 +74,7 @@ class GenderCustomView: UIView {
     
     /// Title Label UI
     private func configureTitleLable() {
-        titleLabel.textColor = AppColor.profileColor
+        titleLabel.textColor = Asset.AppColor.profileColor.color
         titleLabel.font = .h3
     }
     
@@ -84,19 +84,19 @@ class GenderCustomView: UIView {
     private func unSelectedButtonUI(button: UIButton) {
         UIView.animate(withDuration: 0.2) {
             button.layer.borderWidth = 1
-            button.layer.borderColor = AppColor.profileColor.cgColor
-            button.setTitleColor(AppColor.profileColor, for: .normal)
+            button.layer.borderColor = Asset.AppColor.profileColor.color.cgColor
+            button.setTitleColor(Asset.AppColor.profileColor.color, for: .normal)
             button.setImage(AppImage.dot2, for: .normal)
-            button.backgroundColor = AppColor.backgroundColor
+            button.backgroundColor = Asset.AppColor.backgroundColor.color
         }
     }
     
     /// Style for selected state
     private func selectedButtonUI(button: UIButton) {
         UIView.animate(withDuration: 0.2) {
-            button.setTitleColor(AppColor.secondaryText, for: .normal)
+            button.setTitleColor(Asset.AppColor.secondaryText.color, for: .normal)
             button.setImage(AppImage.dot1, for: .normal)
-            button.backgroundColor = AppColor.primaryButton
+            button.backgroundColor = Asset.AppColor.primaryButton.color
         }
     }
     
@@ -107,7 +107,7 @@ class GenderCustomView: UIView {
             button.configuration = nil
             button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 20)
             button.titleLabel?.font = .medium
-            button.tintColor = AppColor.profileColor
+            button.tintColor = Asset.AppColor.profileColor.color
         }
     }
     

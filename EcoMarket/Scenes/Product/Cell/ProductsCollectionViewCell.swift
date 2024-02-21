@@ -35,12 +35,12 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         // Button UI
         favouriteButton.setTitle("", for: .normal)
         favouriteButton.setImage(AppImage.favouriteImage, for: .normal)
-        favouriteButton.tintColor = AppColor.primaryButton
+        favouriteButton.tintColor = Asset.AppColor.primaryButton.color
         
         // Labels UI
         brandName.font = .h3
         productName.font = .regular
         productPrice.font = .h3
-        productName.textColor = AppColor.socialButton
+        productName.textColor = Asset.AppColor.socialButton.color
     }
 }

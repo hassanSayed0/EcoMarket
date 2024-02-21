@@ -30,13 +30,13 @@ class CategoryTableViewCell: UITableViewCell {
     /// Configures the cell's UI, including background color, corner radius, text colors, and fonts.
     func setupUI() {
         // StackView UI
-        stackView.backgroundColor = AppColor.primaryText
+        stackView.backgroundColor = Asset.AppColor.primaryText.color
         stackView.layer.cornerRadius = 70 / 2
         
         // Labels UI
-        categoryName.textColor = AppColor.secondaryText
+        categoryName.textColor = Asset.AppColor.secondaryText.color
         categoryName.font = UIFont.h3
-        productCount.textColor = AppColor.secondaryText
+        productCount.textColor = Asset.AppColor.secondaryText.color
         productCount.font = UIFont.regular
         
         // Cell UI

@@ -48,9 +48,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         categoryImage.layer.cornerRadius = 15
         
         // Labels UI
-        categoryName.textColor = AppColor.primaryText
+        categoryName.textColor = Asset.AppColor.primaryText.color
         categoryName.font = UIFont.h3
-        productCount.textColor = AppColor.primaryText
+        productCount.textColor = Asset.AppColor.primaryText.color
         productCount.font = UIFont.regular
     }
 }

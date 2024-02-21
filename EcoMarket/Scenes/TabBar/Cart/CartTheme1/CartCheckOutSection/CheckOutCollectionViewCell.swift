@@ -34,21 +34,21 @@ class CheckOutCollectionViewCell: UICollectionViewCell {
         // Total Label UI
         totalLabel.font = .medium
         totalLabel.text = "Total (3 items):"
-        totalLabel.textColor = AppColor.socialButton
+        totalLabel.textColor = Asset.AppColor.socialButton.color
         
         // Price Label UI
         productPrice.font = .h2
         productPrice.text = "$500"
-        productPrice.textColor = AppColor.primaryText
+        productPrice.textColor = Asset.AppColor.primaryText.color
     }
     
     /// Configures the appearance of the checkout button.
     private func configureButtonUI() {
         checkOutButton.setTitle("Proceed to Checkout", for: .normal)
-        checkOutButton.setTitleColor(AppColor.mainTheme, for: .normal)
+        checkOutButton.setTitleColor(Asset.AppColor.mainTheme.color, for: .normal)
         checkOutButton.layer.cornerRadius = 8
         checkOutButton.setImage(AppImage.arrowImage, for: .normal)
-        checkOutButton.backgroundColor = AppColor.primaryButton
+        checkOutButton.backgroundColor = Asset.AppColor.primaryButton.color
         
         // Set the semantic content attribute to force right-to-left layout
         checkOutButton.semanticContentAttribute = .forceRightToLeft
@@ -57,7 +57,7 @@ class CheckOutCollectionViewCell: UICollectionViewCell {
             checkOutButton.configuration = nil
             checkOutButton.imageEdgeInsets = .init(top: 0, left: 130, bottom: 0, right: 0)
             checkOutButton.titleLabel?.font = .h3
-            checkOutButton.tintColor = AppColor.mainTheme
+            checkOutButton.tintColor = Asset.AppColor.mainTheme.color
         }
     }
 }

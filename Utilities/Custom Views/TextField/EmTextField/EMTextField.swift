@@ -47,8 +47,8 @@ class EMTextField: UIView {
 // MARK: - Configurations
 private extension EMTextField {
     func configureUI() {
-        backgroundColor = AppColor.backgroundColor
-        containerView.backgroundColor = AppColor.backgroundColor
+        backgroundColor = Asset.AppColor.backgroundColor.color
+        containerView.backgroundColor = Asset.AppColor.backgroundColor.color
         configureTitleLable()
         configureTextField()
         configureBottomLine()
@@ -56,18 +56,18 @@ private extension EMTextField {
     }
     
     func configureTitleLable() {
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         titleLabel.font = .h3
     }
     
     func configureTextField() {
         textfield.borderStyle = .none
-        textfield.textColor = AppColor.socialButton
-        textfield.backgroundColor = AppColor.backgroundColor
+        textfield.textColor = Asset.AppColor.socialButton.color
+        textfield.backgroundColor = Asset.AppColor.backgroundColor.color
     }
     
     func configureBottomLine() {
-        bottomLine.backgroundColor = AppColor.textFieldUnderLine
+        bottomLine.backgroundColor = Asset.AppColor.textFieldUnderLine.color
     }
 }
 

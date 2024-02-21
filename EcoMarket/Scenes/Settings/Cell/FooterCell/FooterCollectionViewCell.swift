@@ -25,14 +25,14 @@ class FooterCollectionViewCell: UICollectionViewCell {
     private func configureLogOutButtonUI() {
         logoutButton.setTitle(L10n.Logout.title, for: .normal)
         logoutButton.setImage(AppImage.logout, for: .normal)
-        logoutButton.backgroundColor = AppColor.primaryButton
-        logoutButton.setTitleColor(AppColor.secondaryText, for: .normal)
+        logoutButton.backgroundColor = Asset.AppColor.primaryButton.color
+        logoutButton.setTitleColor(Asset.AppColor.secondaryText.color, for: .normal)
         logoutButton.layer.cornerRadius = 10
         if #available(iOS 15.0, *) {
             logoutButton.configuration = nil
             logoutButton.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 20)
             logoutButton.titleLabel?.font = .medium
-            logoutButton.tintColor = AppColor.backgroundColor
+            logoutButton.tintColor = Asset.AppColor.backgroundColor.color
         }
     }
     

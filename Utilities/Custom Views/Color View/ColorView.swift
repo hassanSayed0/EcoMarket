@@ -52,8 +52,8 @@ open class ColorView: UIStackView {
     
     /// Configures the appearance of the stack view.
     private func configureStackViewUI() {
-        backgroundColor = AppColor.mainTheme
-        layer.shadowColor = AppColor.primaryButton.cgColor
+        backgroundColor = Asset.AppColor.mainTheme.color
+        layer.shadowColor = Asset.AppColor.primaryButton.color.cgColor
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 15
@@ -115,7 +115,7 @@ open class ColorView: UIStackView {
                 if button === btn {
                     btn.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                     btn.setImage(AppImage.checkImage, for: .normal)
-                    btn.tintColor = AppColor.mainTheme
+                    btn.tintColor = Asset.AppColor.mainTheme.color
                 } else {
                     btn.transform = .identity
                     btn.backgroundColor = color

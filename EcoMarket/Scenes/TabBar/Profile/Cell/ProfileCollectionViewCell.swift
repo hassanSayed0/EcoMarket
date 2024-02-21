@@ -29,7 +29,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     private func setupUI() {
         // Title Label UI
         titleLabel.font = .medium
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         
         // Cell UI
         backgroundColor = .clear

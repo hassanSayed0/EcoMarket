@@ -49,7 +49,7 @@ class CategoryViewController1: UITableViewController {
     //
     /// Configures the appearance of the table view.
     private func configureTableView() {
-        tableView.backgroundColor = AppColor.backgroundColor
+        tableView.backgroundColor = Asset.AppColor.backgroundColor.color
         tableView.separatorStyle = .none
         tableView.registerFromNib(CategoryTableViewCell.self)
     }
@@ -90,11 +90,11 @@ class CategoryViewController1: UITableViewController {
         let titleLabel = UILabel()
         
         headerView.heightConstraints(44)
-        headerView.backgroundColor = AppColor.backgroundColor
+        headerView.backgroundColor = Asset.AppColor.backgroundColor.color
         headerView.addSubview(titleLabel)
         
         titleLabel.text = "Categories"
-        titleLabel.textColor = AppColor.primaryText
+        titleLabel.textColor = Asset.AppColor.primaryText.color
         titleLabel.font = UIFont.h2
         
         let padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)

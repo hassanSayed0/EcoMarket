@@ -61,7 +61,7 @@ class SettingsCustomTextField: UIView {
 // MARK: - Configurations
 private extension SettingsCustomTextField {
     func configureUI() {
-        backgroundColor = AppColor.backgroundColor
+        backgroundColor = Asset.AppColor.backgroundColor.color
         configureTitleLable()
         configureTextField()
         configureButtomLine()
@@ -69,16 +69,16 @@ private extension SettingsCustomTextField {
     }
     
     func configureTitleLable() {
-        titleLabel.textColor = AppColor.profileColor
+        titleLabel.textColor = Asset.AppColor.profileColor.color
         titleLabel.font = .h3
     }
     
     func configureTextField() {
         textField.borderStyle = .none
-        textField.textColor = AppColor.primaryText
+        textField.textColor = Asset.AppColor.primaryText.color
     }
     
     func configureButtomLine() {
-        bottomLine.backgroundColor = AppColor.textFieldUnderLine
+        bottomLine.backgroundColor = Asset.AppColor.textFieldUnderLine.color
     }
 }
