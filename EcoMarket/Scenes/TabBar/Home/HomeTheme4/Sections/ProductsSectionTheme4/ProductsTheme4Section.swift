@@ -30,22 +30,19 @@ class ProductsTheme4Section: SectionsLayout {
         
         // Item
         let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0)))
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1)))
         let item2 = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.4) ))
-        
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1) ))
+        item2.edgeSpacing? = NSCollectionLayoutEdgeSpacing(leading: .none, top: .fixed(50), trailing: .none, bottom: .none)
         // Group
-        let group = NSCollectionLayoutGroup.vertical(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1)),
-            subitem: item2, count: 1)
         
-        let group2 = NSCollectionLayoutGroup.horizontal(
+        let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(height)),
-            subitems: [item, group])
-        group2.interItemSpacing = .fixed(interItemSpacing)
+            subitems: [item, item2])
+        group.interItemSpacing = .fixed(interItemSpacing)
         
         // Section
-        let section = NSCollectionLayoutSection(group: group2)
+        let section = NSCollectionLayoutSection(group: group)
         
         return section
     }
