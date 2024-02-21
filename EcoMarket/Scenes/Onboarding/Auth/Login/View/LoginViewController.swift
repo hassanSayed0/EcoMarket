@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         lineView.backgroundColor = Asset.AppColor.textFieldUnderLine.color
         
         // Images UI
-        logoImage.image = AppImage.appLogo
+        logoImage.image = Asset.appLogo.image
         
         // Buttons UI
         loginButton.title = L10n.login

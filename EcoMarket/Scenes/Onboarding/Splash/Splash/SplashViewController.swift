@@ -40,12 +40,12 @@ class SplashViewController: UIViewController {
     }
     
     private func setupBackgroundImage() {
-        backgroundImage.image = AppImage.Onboarding.splash1
+        backgroundImage.image = Asset.Onboarding.splash1.image
         backgroundImage.contentMode = .scaleAspectFill
     }
     
     private func setupLogoImage() {
-        logoImage.image = AppImage.Onboarding.logo
+        logoImage.image = Asset.Onboarding.logo.image
         logoImage.contentMode = .scaleAspectFill
     }
     

@@ -34,7 +34,7 @@ class SignupViewController: UIViewController {
         view.backgroundColor = Asset.AppColor.backgroundColor.color
         
         // Images UI
-        logoImage.image = AppImage.appLogo
+        logoImage.image = Asset.appLogo.image
         
         // Buttons UI
         loginButton.title = L10n.login

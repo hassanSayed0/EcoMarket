@@ -56,7 +56,7 @@ class CartTheme2CollectionViewCell: UICollectionViewCell {
     /// Configures the appearance of the delete button.
     private func configureButtonUI() {
         deleteButton.setTitle("", for: .normal)
-        deleteButton.setImage(AppImage.delete, for: .normal)
+        deleteButton.setImage(Asset.delete.image, for: .normal)
     }
     
     private func setupStapperView() {

@@ -14,7 +14,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        indicatorImage.image = AppImage.arrow
+        indicatorImage.image = Asset.Icon.profileArrow.image
         setupUI()
     }
 

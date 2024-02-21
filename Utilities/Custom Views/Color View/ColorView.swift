@@ -114,7 +114,7 @@ open class ColorView: UIStackView {
             UIView.animate(withDuration: 0.3) {
                 if button === btn {
                     btn.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                    btn.setImage(AppImage.checkImage, for: .normal)
+                    btn.setImage(Asset.checkImage.image, for: .normal)
                     btn.tintColor = Asset.AppColor.mainTheme.color
                 } else {
                     btn.transform = .identity

@@ -46,7 +46,7 @@ class SuccessViewController: UIViewController {
         successMessage.textColor = Asset.AppColor.socialButton.color
         
         // Images UI
-        imageView.image = AppImage.successImage
+        imageView.image = Asset.iconSuccess.image
         
         // Buttons UI
         startButton.title = L10n.Success.Button.title

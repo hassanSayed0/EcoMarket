@@ -37,7 +37,7 @@ class SearchView: UIView {
         
         ///  SearchImage UI
         searchImage.tintColor = Asset.AppColor.primaryText.color
-        searchImage.image = AppImage.searchImage
+        searchImage.image = UIImage(systemName: "magnifyingglass")
         
         /// View UI
         layer.cornerRadius = frame.height / 2

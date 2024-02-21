@@ -58,7 +58,7 @@ class CartProductsSection: SectionsLayout {
         }
         
         let action = UIContextualAction(style: .normal, title: nil, handler: actionHandler)
-        action.image = AppImage.Icon.productDelete
+        action.image = Asset.Icon.productDelete.image
         action.backgroundColor = Asset.AppColor.primaryButton.color
         
         return UISwipeActionsConfiguration(actions: [action])

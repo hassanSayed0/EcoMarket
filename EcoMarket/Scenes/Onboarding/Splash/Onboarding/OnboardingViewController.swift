@@ -63,7 +63,7 @@ class OnboardingViewController: UIViewController {
         nextButton.backgroundColor = Asset.AppColor.primaryButton.color
         nextButton.layer.cornerRadius = nextButton.frame.width / 2
         nextButton.clipsToBounds = true
-        nextButton.setImage(AppImage.Onboarding.nextButton, for: .normal)
+        nextButton.setImage(Asset.Onboarding.nextButton.image, for: .normal)
         nextButton.imageView?.contentMode = .scaleAspectFit
         nextButton.addAction(.init(handler: {[weak self] _ in self?.nextButtonTap()}), for: .touchUpInside)
     }

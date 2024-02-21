@@ -34,7 +34,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         
         // Button UI
         favouriteButton.setTitle("", for: .normal)
-        favouriteButton.setImage(AppImage.favouriteImage, for: .normal)
+        favouriteButton.setImage(UIImage(systemName: "heart.circle.fill"), for: .normal)
         favouriteButton.tintColor = Asset.AppColor.primaryButton.color
         
         // Labels UI

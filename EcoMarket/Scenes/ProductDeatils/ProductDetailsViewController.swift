@@ -106,13 +106,13 @@ class ProductDetailsViewController: UIViewController {
     }
     
     private func setupFavoriteButton() {
-        favoriteButton.setImage(AppImage.favIcon, for: .normal)
+        favoriteButton.setImage(Asset.favourite.image, for: .normal)
         favoriteButton.setTitle("", for: .normal)
     }
     
     private func setupAddToCartButton() {
         addToCartButton.title = L10n.Product.Details.cart
-        addToCartButton.setImage(AppImage.cartIcon, for: .normal)
+        addToCartButton.setImage(Asset.cart.image, for: .normal)
         addToCartButton.tintColor = .white
     }
 }
