@@ -41,7 +41,7 @@ class CustomProductDetailsSection: SectionsLayout {
         
         return section
     }
-    
+//    ttttttt
     private func trailingSwipeActionConfiguration(
         _ collectionView: UICollectionView,
         at indexPath: IndexPath
