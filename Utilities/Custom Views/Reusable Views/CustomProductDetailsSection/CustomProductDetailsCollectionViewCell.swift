@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CustomProductDetailsViewCellDelegate: AnyObject {
+    func addToCart(_ cell: CustomProductDetailsCollectionViewCell, product: CustomProductDetails)
+    func updateCount(_ cell: CustomProductDetailsCollectionViewCell, for product: CustomProductDetails?, with count: Int)
+}
+
 class CustomProductDetailsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
@@ -21,10 +26,14 @@ class CustomProductDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var addToCartButton: UIButton!
     
+    weak var delegate: CustomProductDetailsViewCellDelegate?
+    var cartProduct: CustomProductDetails?
+    
     // MARK: - Data Setup Method
-    func setup(cart: (Product, CustomProductDetails)) {
+    func setup(cart: (Product, CustomProductDetails), delegate: CustomProductDetailsViewCellDelegate?) {
         let product = cart.0
         let cartProduct = cart.1
+        self.cartProduct = cartProduct
         productName.text = product.name
         brandName.text = product.brandName
         productPrice.text = String(product.price)
@@ -32,6 +41,7 @@ class CustomProductDetailsCollectionViewCell: UICollectionViewCell {
         productSize.text = "Size: \(cartProduct.selectedSize.rawValue.uppercased())"
         productColor.backgroundColor = cartProduct.selectedColor
         configureUI()
+        self.delegate = delegate
         stapperView.minmumValue = cartProduct.count
         if cart.1.isFavorite {
             stapperView.isHidden = true
@@ -93,7 +103,7 @@ class CustomProductDetailsCollectionViewCell: UICollectionViewCell {
     private func configureAddToCartButtonUI() {
         addToCartButton.setTitle("Add to cart", for: .normal)
         addToCartButton.setTitleColor(.white, for: .normal)
-        addToCartButton.layer.cornerRadius = 20
+        addToCartButton.layer.cornerRadius = 15
         addToCartButton.tintColor = .emBackground
         addToCartButton.backgroundColor = .emPrimaryButton
         if #available(iOS 15.0, *) {
@@ -101,11 +111,20 @@ class CustomProductDetailsCollectionViewCell: UICollectionViewCell {
             addToCartButton.titleLabel?.font = .custom(size: 10, weight: .bold)
         }
     }
+    
+    @IBAction func addToCartButtonTapped(_ sender: Any) {
+        guard let product = cartProduct else {
+            Logger.log("Failed", category: \.default, level: .fault)
+            return
+        }
+        print("Donne")
+        delegate?.addToCart(self, product: product)
+    }
 }
 
 // MARK: - StapperDelegate
 extension CustomProductDetailsCollectionViewCell: StapperViewDelegate {
     func stapperView(_ stapper: StapperView, didSet value: Int) {
-        print(value)
+        delegate?.updateCount(self, for: cartProduct, with: value)
     }
 }

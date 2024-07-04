@@ -7,18 +7,27 @@
 
 import UIKit
 
+protocol CheckOutCollectionViewCellDelegate: AnyObject {
+    func didTapCheckout()
+}
+
 class CheckOutCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
-    //
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var checkOutButton: PrimaryButton!
     
+    weak var delegate: CheckOutCollectionViewCellDelegate?
+    
     // MARK: - Lifecycle Methods
-    //
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+    }
+    
+    func setup(totalPrice: String, productsCount: Int) {
+        totalLabel.text = "Total (\(productsCount) items):"
+        productPrice.text = "$\(totalPrice)"
     }
     
     // MARK: - UI Configuration
@@ -33,12 +42,10 @@ class CheckOutCollectionViewCell: UICollectionViewCell {
     private func configureLabelsUI() {
         // Total Label UI
         totalLabel.font = .medium
-        totalLabel.text = "Total (3 items):"
         totalLabel.textColor = AppColor.socialButton
         
         // Price Label UI
         productPrice.font = .h2
-        productPrice.text = "$500"
         productPrice.textColor = AppColor.primaryText
     }
     
@@ -59,5 +66,10 @@ class CheckOutCollectionViewCell: UICollectionViewCell {
             checkOutButton.titleLabel?.font = .h3
             checkOutButton.tintColor = AppColor.mainTheme
         }
+    }
+    
+    
+    @IBAction func checkOutButtonTapped(_ sender: Any) {
+        delegate?.didTapCheckout()
     }
 }

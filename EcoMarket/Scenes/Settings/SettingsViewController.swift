@@ -10,11 +10,9 @@ import UIKit
 class SettingsViewController: UICollectionViewController {
     
     // MARK: - Properties
-    //
     var sections: [any SectionsLayout] = []
     
     // MARK: - Initialization
-    //
     let viewModel: SettingsViewModel
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -27,14 +25,13 @@ class SettingsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backButtonTitle = ""
         addCollectionViewSections()
         configureCollectionView()
         collectionView.reloadData()
     }
     
     // MARK: - UI Configuration
-    
-    /// Configures the collection view with necessary settings and registers cell classes.
     private func configureCollectionView() {
         sections.forEach { section in
             section.registerCell(in: self.collectionView)
@@ -50,7 +47,9 @@ class SettingsViewController: UICollectionViewController {
         
         _ = viewModel.getSectionLayouts().map { self.sections.append($0) }
         
-        self.sections.append(FooterSection())
+        let footerSection = FooterSection()
+        footerSection.delegate = self
+        self.sections.append(footerSection)
     }
     
     // MARK: - Compositional Layout
@@ -59,7 +58,11 @@ class SettingsViewController: UICollectionViewController {
     /// - Returns: A UICollectionViewCompositionalLayout object.
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+            self.sections[sectionIndex].sectionLayout(
+                self.collectionView,
+                layoutEnvironment: layoutEnvironment,
+                sectionIndex: sectionIndex
+            )
         }
         sections.forEach { section in
             section.registerDecorationView(layout: layout)
@@ -89,5 +92,11 @@ class SettingsViewController: UICollectionViewController {
         sections[indexPath.section].collectionView(collectionView, 
                                                    viewForSupplementaryElementOfKind: kind,
                                                    at: indexPath)
+    }
+}
+
+extension SettingsViewController: FooterSectionDelegate {
+    func footerSection(_ section: FooterSection) {
+        viewModel.didTapLogOut()
     }
 }

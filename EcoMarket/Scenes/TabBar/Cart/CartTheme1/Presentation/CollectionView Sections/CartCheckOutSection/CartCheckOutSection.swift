@@ -7,18 +7,19 @@
 
 import UIKit
 
+protocol CartCheckOutSectionDelegate: AnyObject {
+    func didTapCheckout(_ section: CartCheckOutSection)
+}
+
 class CartCheckOutSection: SectionsLayout {
     
     typealias ItemsType = String
     var items: [String] = [""]
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: CheckOutCollectionViewCell = collectionView.dequeue(indexPath: indexPath) else {
-            Logger.log("Can't dequeue ProductsCollectionViewCell", category: \.default, level: .fault)
-            return UICollectionViewCell()
-        }
-        return cell
-    }
+    weak var delegate: CartCheckOutSectionDelegate?
+    
+    var totalPrice: String = ""
+    var productsCount: Int = 0
     
     func numberOfItems() -> Int {
         items.count
@@ -30,7 +31,8 @@ class CartCheckOutSection: SectionsLayout {
     
     func sectionLayout(
         _ collectionView: UICollectionView,
-        layoutEnvironment: NSCollectionLayoutEnvironment
+        layoutEnvironment: NSCollectionLayoutEnvironment,
+        sectionIndex: Int
     ) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
@@ -47,7 +49,18 @@ class CartCheckOutSection: SectionsLayout {
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
-    func collectionView(_ collectionView: UICollectionView, 
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell: CheckOutCollectionViewCell = collectionView.dequeue(indexPath: indexPath) else {
+            Logger.log("Can't dequeue ProductsCollectionViewCell", category: \.default, level: .fault)
+            return UICollectionViewCell()
+        }
+        cell.setup(totalPrice: totalPrice, productsCount: productsCount)
+        cell.delegate = self
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         UICollectionReusableView()
@@ -67,5 +80,16 @@ class CartCheckOutSection: SectionsLayout {
     
     func registerDecorationView(layout: UICollectionViewLayout) {
         
+    }
+    
+    func setup(totalPrice: String, productsCount: Int) {
+        self.totalPrice = totalPrice
+        self.productsCount = productsCount
+    }
+}
+
+extension CartCheckOutSection: CheckOutCollectionViewCellDelegate {
+    func didTapCheckout() {
+        delegate?.didTapCheckout(self)
     }
 }

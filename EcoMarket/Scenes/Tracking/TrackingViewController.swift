@@ -159,7 +159,11 @@ class TrackingViewController: UIViewController {
     // MARK: - Compositional Layout
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+            self.sections[sectionIndex].sectionLayout(
+                self.collectionView,
+                layoutEnvironment: layoutEnvironment,
+                sectionIndex: sectionIndex
+            )
         }
     }
 }
@@ -200,57 +204,5 @@ extension TrackingViewController: UICollectionViewDelegate, UICollectionViewData
         if offsetY < 108 && offsetY > 0 {
             trackingContanerViewHeightConstraint.constant = maxHeight - offsetY
         }
-    }
-}
-
-class TrackingView: UIStackView {
-    
-    private var views: [CustomView] = []
-    
-    var count: Int = 0 {
-        didSet {
-            addViews(count)
-        }
-    }
-    
-    private func addViews(_ count: Int) {
-        removeAllSubViews()
-        for _ in 0..<count-1 {
-            let viewToAdd = CustomView()
-            addArrangedSubview(viewToAdd)
-            views.append(viewToAdd)
-        }
-        distribution = .fillEqually
-        
-        let view = UIView()
-        view.backgroundColor = .red
-        view.equalSizeConstraints(14)
-        view.layer.cornerRadius = 7
-        view.layoutIfNeeded()
-        view.makeCircular()
-        
-        addSubview(view)
-        view.centerYInSuperview()
-        view.makeConstraints(trailingAnchor: trailingAnchor)
-    }
-    
-    private func removeAllSubViews() {
-        arrangedSubviews.forEach { view in
-            self.removeArrangedSubview(view)
-        }
-    }
-    
-    func select(at index: Int) {
-        for iii in 0...index {
-            views[iii].selectLine()
-            views[iii].selectCircule()
-        }
-        
-        if index < views.count - 1 {
-            views[index+1].selectCircule()
-        } else {
-            
-        }
-        
     }
 }

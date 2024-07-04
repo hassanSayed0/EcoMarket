@@ -90,7 +90,11 @@ class WishListViewController: UIViewController {
     // MARK: - Compositional Layout
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+            self.sections[sectionIndex].sectionLayout(
+                self.collectionView,
+                layoutEnvironment: layoutEnvironment,
+                sectionIndex: sectionIndex
+            )
         }
     }
 }
@@ -121,6 +125,14 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 extension WishListViewController: CustomProductDetailsSectionDelegate {
+    func updateCount(_ cell: CustomProductDetailsCollectionViewCell, for product: CustomProductDetails?, with count: Int) {
+        
+    }
+    
+    func customProductDetails(_ section: CustomProductDetailsSection, product: CustomProductDetails) {
+        viewModel.addToCart(product)
+    }
+    
     func customProductDetailsSection(
         _ section: CustomProductDetailsSection,
         willRemove item: (Product, CustomProductDetails),

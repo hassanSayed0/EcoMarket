@@ -10,7 +10,8 @@ import Combine
 
 class CartViewModel {
     @Published var products: [(Product, CustomProductDetails)] = []
-    
+    @Published var totalPrice: String = ""
+    @Published var cartCount = 0
     var cancellabel = Set<AnyCancellable>()
     
     let cartUseCase: CustomProductUseCaseProtocol
@@ -35,7 +36,8 @@ class CartViewModel {
                 .getProducts(by: cartProducts)
                 .filter({ $0.1.inCart })
             self.products = products
-            
+            self.totalPrice = String(products.totalPrice())
+            self.cartCount = cartProducts.filter {$0.inCart}.count
         }
         .store(in: &cancellabel)
     }
@@ -52,5 +54,28 @@ class CartViewModel {
                 print("error in removeCartViewModel from CartViewModel ")
             }
         }
+    }
+    
+    func updateCount(for product: CustomProductDetails?, with count: Int) {
+        cartUseCase.updateCount(for: product, with: count)
+    }
+    
+    func viewWillAppear() {
+        coordinator.showTabBar()
+    }
+    
+    func didTapCheckout() {
+        if products.isEmpty {
+            coordinator.showAlert(item: AlertItem(message: L10n.Cart.empty, buttonTitle: "OK", image: .error, status: .error))
+        } else {
+            coordinator.showShipping()
+            coordinator.hideTabBar()
+        }
+    }
+}
+
+extension Array where Element == (Product, CustomProductDetails) {
+    func totalPrice() -> Double {
+        map {$0.0.price * Double($0.1.count)}.reduce(0, +)
     }
 }

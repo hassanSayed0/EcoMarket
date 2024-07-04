@@ -11,15 +11,16 @@ import Combine
 class CartViewController: UICollectionViewController {
     
     // MARK: - Properties
-    lazy var sections: [any SectionsLayout] =  [productSection, CartPromoCodeSection(), CartCheckOutSection()]
-
+    lazy var sections: [any SectionsLayout] =  [productSection, CartPromoCodeSection(), cartCheckOutSection]
+    
     private var cancellable: Set<AnyCancellable> = []
     
     let productSection = CustomProductDetailsSection()
-
+    let cartCheckOutSection = CartCheckOutSection()
+    var customCart = CustomCartView()
     // MARK: - Initializer -
     let viewModel: CartViewModel
-
+    
     init(viewModel: CartViewModel) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: .init())
@@ -32,6 +33,7 @@ class CartViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
+        viewModel.viewWillAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,16 +44,42 @@ class CartViewController: UICollectionViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         viewModel.viewDidLoad()
         addCollectionViewSections()
         productSection.delegate = self
+        cartCheckOutSection.delegate = self
+        bindViewModel()
+    }
+    
+    private func configureUI() {
+        title = L10n.Cart.title
+        navigationItem.backButtonTitle = ""
+        addingRightBarButtonItem()
+    }
+    
+    private func addingRightBarButtonItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: customCart)
+    }
+    
+    // MARK: - Private Methods
+    private func bindViewModel() {
         viewModel.$products.sink {  products in
             
-            DispatchQueue.main.async {
-                self.productSection.items = products
-                self.productSection.headerTitle = "My Cart"
-                self.collectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return}
+                productSection.items = products
+                cartCheckOutSection.setup(
+                    totalPrice: viewModel.totalPrice,
+                    productsCount: products.count
+                )
+                collectionView.reloadData()
             }
+        }
+        .store(in: &cancellable)
+        
+        viewModel.$cartCount.sink { [weak self] count in
+            self?.customCart.setCount(count)
         }
         .store(in: &cancellable)
     }
@@ -61,8 +89,6 @@ class CartViewController: UICollectionViewController {
     }
     
     // MARK: - UI Configuration
-    
-    /// Configures the collection view with necessary settings and registers cell classes.
     private func configureCollectionView() {
         sections.forEach { section in
             section.registerCell(in: self.collectionView)
@@ -73,12 +99,13 @@ class CartViewController: UICollectionViewController {
     }
     
     // MARK: - Compositional Layout
-    //
-    /// Creates a compositional layout for the collection view.
-    /// - Returns: A UICollectionViewCompositionalLayout object.
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+            self.sections[sectionIndex].sectionLayout(
+                self.collectionView,
+                layoutEnvironment: layoutEnvironment,
+                sectionIndex: sectionIndex
+            )
         }
     }
     
@@ -95,7 +122,7 @@ class CartViewController: UICollectionViewController {
         sections[indexPath.section].collectionView(collectionView, cellForItemAt: indexPath)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, 
+    override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
         sections[indexPath.section].collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
@@ -104,7 +131,19 @@ class CartViewController: UICollectionViewController {
     }
 }
 
-extension CartViewController: CustomProductDetailsSectionDelegate {
+extension CartViewController: CustomProductDetailsSectionDelegate, CartCheckOutSectionDelegate {
+    func didTapCheckout(_ section: CartCheckOutSection) {
+        viewModel.didTapCheckout()
+    }
+    
+    func updateCount(_ cell: CustomProductDetailsCollectionViewCell, for product: CustomProductDetails?, with count: Int) {
+        viewModel.updateCount(for: product, with: count)
+    }
+    
+    func customProductDetails(_ section: CustomProductDetailsSection, product: CustomProductDetails) {
+        
+    }
+    
     func customProductDetailsSection(
         _ section: CustomProductDetailsSection,
         willRemove item: (Product, CustomProductDetails),

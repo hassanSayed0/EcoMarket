@@ -11,12 +11,10 @@ import Combine
 class Home2ViewController: UIViewController {
     
     // MARK: - Properties
-    //
     var sections: [any SectionsLayout] = []
     private var headerViewHeight: CGFloat = 0
     
     // MARK: - Outlets
-    //
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterButton: UIButton!
@@ -37,23 +35,18 @@ class Home2ViewController: UIViewController {
     }
     
     // MARK: - Lifecycle Methods
-    //
     override func viewDidLoad() {
         super.viewDidLoad()
         headerViewHeight = headerStackViewHeightConstraints.constant
         bindViewModel()
         configureUI()
-        navigationItem.backButtonTitle = ""
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: AppImage.Icon.menu?.withRenderingMode(.alwaysOriginal),
-            style: .done,
-            target: self,
-            action: #selector(menuButtonTapped))
+        addingLeftBarButtonItem()
         viewModel.reloadData = {[weak self] in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
             }
         }
+        viewModel.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,8 +59,6 @@ class Home2ViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    //
-    
     private func bindViewModel() {
         sectionsCancellable = viewModel.$sections
             .sink {[weak self] sections in
@@ -80,6 +71,15 @@ class Home2ViewController: UIViewController {
                     self.collectionView.reloadData()
                 }
             }
+    }
+    
+    private func addingLeftBarButtonItem() {
+        navigationItem.backButtonTitle = ""
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: AppImage.Icon.menu?.withRenderingMode(.alwaysOriginal),
+            style: .done,
+            target: self,
+            action: #selector(menuButtonTapped))
     }
     
     // MARK: - UI Configuration
@@ -120,7 +120,11 @@ class Home2ViewController: UIViewController {
     // MARK: - Compositional Layout
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            self.sections[sectionIndex].sectionLayout(self.collectionView, layoutEnvironment: layoutEnvironment)
+            self.sections[sectionIndex].sectionLayout(
+                self.collectionView,
+                layoutEnvironment: layoutEnvironment,
+                sectionIndex: sectionIndex
+            )
         }
     }
 }

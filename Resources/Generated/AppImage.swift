@@ -101,8 +101,17 @@ enum AppImage {
         static var back: UIImage? {
             return UIImage(folderName: .icon, named: "back")
 		}
+        
         static var scan: UIImage? {
             return UIImage(folderName: .icon, named: "scan")
+        }
+        
+        static var cart: UIImage? {
+            return UIImage(folderName: .icon, named: "cart")
+        }
+        
+        static var location: UIImage? {
+            return UIImage(folderName: .icon, named: "location")
         }
     }
     
@@ -110,6 +119,14 @@ enum AppImage {
         
         static var addToCart: UIImage? {
             return UIImage(folderName: .alert, named: "add-to-cart")
+        }
+        
+        static var warning: UIImage? {
+            return UIImage(folderName: .alert, named: "warning")
+        }
+        
+        static var error: UIImage? {
+            return UIImage(folderName: .alert, named: "error")
         }
     }
     
@@ -133,6 +150,41 @@ enum AppImage {
         }
     }
     
+    enum CreditCard {
+        private static var folderName: String {"creditcard"}
+        
+        static var credit1: UIImage? {
+            UIImage(named: "\(folderName)/credit1")
+        }
+        
+        static var credit2: UIImage? {
+            UIImage(named: "\(folderName)/credit2")
+        }
+        
+        static var credit3: UIImage? {
+            UIImage(named: "\(folderName)/credit3")
+        }
+        
+        static var credit4: UIImage? {
+            UIImage(named: "\(folderName)/credit4")
+        }
+        
+        static var visaLogo: UIImage? {
+            UIImage(named: "\(folderName)/visa")
+        }
+        
+        static var masterCardLogo: UIImage? {
+            UIImage(named: "\(folderName)/mastercard")
+        }
+        
+        static var paypalLogo: UIImage? {
+            UIImage(named: "\(folderName)/paypal")
+        }
+        
+        static var americanLogo: UIImage? {
+            UIImage(named: "\(folderName)/ameri")
+}
+}
     enum ProductDetails {
         private static var folderName: String {"productDetails"}
     
